@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const redtext = document.createElement('p')
+        redtext.textContent = 'hey im red'
+        redtext. setAttribute('style', 'color: red;')
+        const bluetext = document.createElement('h3')
+        bluetext.textContent = 'hey im blue'
+        bluetext.setAttribute('style', 'color: blue;')
+        const container = document.createElement('div')
+        container.setAttribute('style', 'background-color: pink; border-width: 2px; border-style: solid; border-color: black; height: 200px; width: 200px;')
+        const indiv = document.createElement('h1')
+        indiv.textContent = 'im in a div'
+        indiv.setAttribute('style', 'text-align: center;')
+        const metoo = document.createElement('p')
+        metoo.textContent = 'me too'
+
+        document.body.appendChild(redtext)
+        document.body.appendChild(bluetext)
+        document.body.appendChild(container)
+        container.appendChild(indiv)
+        container.appendChild(metoo)
+    </script>
+</body>
+</html>
