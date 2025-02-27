@@ -20,12 +20,22 @@
         indiv.setAttribute('style', 'text-align: center;')
         const metoo = document.createElement('p')
         metoo.textContent = 'me too'
+        const button = document.createElement('button')
+        button.textContent = 'Click me'
+        
+        function alert() {
+            alert('yeyeye you did it');
+            
+        }
+
+        button.addEventListener('click', alert)
 
         document.body.appendChild(redtext)
         document.body.appendChild(bluetext)
         document.body.appendChild(container)
         container.appendChild(indiv)
         container.appendChild(metoo)
+        container.appendChild(button)
     </script>
 </body>
 </html>
