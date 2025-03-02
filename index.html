@@ -26,13 +26,13 @@
         </div>
         <div class="middle">
             <div class="buttons">
-                <button id="rock" onclick="playGame('rock')">
+                <button id="rock-inside" onclick="playGame('rock')">
                     <img src="img/rock-image.png" width="50px" height="50px" id="rock-capture">
                 </button>
-                <button id="paper" onclick="playGame('paper')">
+                <button id="paper-inside" onclick="playGame('paper')">
                     <img src="img/paper-image.png" width="50px" height="50px" id="paper-capture">
                 </button>
-                <button id="scissors" onclick="playGame('scissors')">
+                <button id="scissors-inside" onclick="playGame('scissors')">
                     <img src="img/scissors-image3.png" width="50px" height="50px" id="scissors-capture"> 
                 </button>
             </div>
@@ -58,10 +58,9 @@
                     } else if (random >= 2/3 && random < 1) {
                         computerChoice = 'scissors'
                     }
-                    
+
                 }
                 randomChoice()
-                console.log(computerChoice)
                 
                 function createResult() {    
                     if (computerChoice === 'rock') {
@@ -96,8 +95,6 @@
                 
                 }
                 createResult()
-                console.log(playerChoice)
-                console.log(result)
                 
                 let playerChoiceVisual = document.querySelector('.player-choice')
                 let computerChoiceVisual = document.querySelector('.computer-choice')
@@ -119,27 +116,31 @@
                 scissorsImg.src = "img/scissors-image3.png"
                 scissorsImg.width = 50
                 scissorsImg.height = 50
-                
+
                 function displayResult() {
                     
                     
                     buttons.addEventListener('mouseover', (event) => {
                         
+                        while (playerChoiceVisual.children.length > 0) {
+                            playerChoiceVisual.removeChild(playerChoiceVisual.lastChild);
+                        }
+
                         let target = event.target;
 
                         switch(target.id) {
                             
-                            case 'rock':
+                            case 'rock-inside':
                                 playerChoiceVisual.appendChild(rockImg)
                                 playerChoiceVisual.setAttribute('style', 'background-color: lightblue;')
                             break;
                             
-                            case 'paper':
+                            case 'paper-inside':
                                 playerChoiceVisual.appendChild(paperImg)
                                 playerChoiceVisual.setAttribute('style', 'background-color: lightgreen;')
                             break;
                             
-                            case 'scissors':
+                            case 'scissors-inside':
                                 playerChoiceVisual.appendChild(scissorsImg)
                                 playerChoiceVisual.setAttribute('style', 'background-color: pink;')
                             break;
@@ -161,31 +162,25 @@
                             return
                         }
                     })
-
+                    
                     buttons.addEventListener('mouseout', (event) => {
                         let target = event.target;
 
                         switch(target.id) {
-                            case 'rock':
+                            case 'rock-inside':
                                 playerChoiceVisual.textContent = ''
                                 playerChoiceVisual.setAttribute('style', 'background: transparent;')
                             break;
                             
-                            case 'paper':
+                            case 'paper-inside':
                                 playerChoiceVisual.textContent = ''
                                 playerChoiceVisual.setAttribute('style', 'background: transparent;')
                             break;
                             
-                            case 'scissors':
+                            case 'scissors-inside':
                                 playerChoiceVisual.textContent = ''
                                 playerChoiceVisual.setAttribute('style', 'background: transparent;')
                             break;
-                        }
-                    })
-
-                    buttons.addEventListener('click', () => {
-                        if (playerChoiceVisual) {
-                            
                         }
                     })
                     
@@ -196,8 +191,35 @@
                     } else if (result === 'lose') {
                         resultVisual.textContent = `You ${result} :(`
                     } else {resultVisual.textContent = `You ${result}!`}
+
+                    function score() {}
                 }
                 displayResult()
+
+                function computerChoiceDisplay() {
+                        
+                    if (playerChoice.length > 3) {
+                        if (computerChoice === 'rock') {
+                                computerChoiceVisual.appendChild(rockImg)
+                                computerChoiceVisual.setAttribute('style', 'background-color: lightblue;')
+                        } else if (computerChoice === 'paper') {
+                            computerChoiceVisual.appendChild(paperImg)
+                            computerChoiceVisual.setAttribute('style', 'background-color: lightgreen;')
+                        } else if (computerChoice === 'scissors') {
+                            computerChoiceVisual.appendChild(scissorsImg)
+                            computerChoiceVisual.setAttribute('style', 'background-color: pink;')
+                        }
+                        
+
+                        while (computerChoiceVisual.children.length > 1) {
+                            computerChoiceVisual.removeChild(computerChoiceVisual.firstChild);
+                        
+                        }
+                    } else {
+                        computerChoiceVisual.removeChildren()
+                    }
+                }
+                computerChoiceDisplay()
 
             }
             
