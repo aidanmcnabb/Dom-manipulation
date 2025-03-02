@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+    
     <script>
         const redtext = document.createElement('p')
         redtext.textContent = 'hey im red'
@@ -36,6 +37,51 @@
         container.appendChild(indiv)
         container.appendChild(metoo)
         container.appendChild(button)
+
+        const button = document.createElement('button')
+        button.setAttribute('id', 'btn')
+        button.textContent = 'Click me!'
+        document.body.appendChild(button)
+
+        const btn = document.querySelector('#btn')
+        btn.addEventListener('click', () => {
+            alert('Hello World!')
+        })
+
+        btn.addEventListener('click', function (e) {
+            console.log(e.target)
+        })
+
+        btn.addEventListener('click', function (e) {
+            e.target.style.color = 'blue'
+        })
+
+        const container5 = document.createElement('div')
+        container5.setAttribute('id', 'container5')
+        const button1 = document.createElement('button')
+        button1.textContent = 'Click me'
+        button1.setAttribute('id', 'one')
+        const button2 = document.createElement('button')
+        button2.textContent = 'Click me'
+        button2.setAttribute('id', 'two')
+        const button3 = document.createElement('button')
+        button3.textContent = 'Click me'
+        button3.setAttribute('id', 'three')
+
+        document.body.appendChild(container5)
+        container5.appendChild(button1)
+        container5.appendChild(button2)
+        container5.appendChild(button3)
+
+        const buttons = document.querySelectorAll('button')
+
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                alert(button.id);
+            })
+        })
+
+
     </script>
 </body>
 </html>

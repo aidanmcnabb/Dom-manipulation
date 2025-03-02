@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <p class="header">RPS BITCH</p>
+    <button id="reset">RESET</button>
+    <div class="rps">
+        <div class="top">
+            <div class="player-choice">
+                
+            </div>
+            <div class="vs">vs</div>
+            <div class="computer-choice">
+                
+            </div>
+            
+        </div>
+        <div class="under-text">
+            <span id="under-player">Player Choice</span>
+            <span id="under-computer">Computer Choice</span>
+        </div>
+        <div class="middle">
+            <div class="buttons">
+                <button id="rock" onclick="playGame('rock')">
+                    <img src="img/rock-image.png" width="50px" height="50px" id="rock-capture">
+                </button>
+                <button id="paper" onclick="playGame('paper')">
+                    <img src="img/paper-image.png" width="50px" height="50px" id="paper-capture">
+                </button>
+                <button id="scissors" onclick="playGame('scissors')">
+                    <img src="img/scissors-image3.png" width="50px" height="50px" id="scissors-capture"> 
+                </button>
+            </div>
+            
+        </div>
+        <div class="bottom-top">
+            Result
+        </div>
+        <div class="bottom">
+            Score
+        </div>
+        <script>
+            
+            function playGame(playerChoice) {
+                const random = Math.random();
+                let computerChoice = ''
+                let result = ''
+                function randomChoice() {
+                    if (random >= 0 && random < 1/3) {
+                        computerChoice = 'rock'
+                    } else if (random >= 1/3 && random < 2/3) {
+                        computerChoice = 'paper'
+                    } else if (random >= 2/3 && random < 1) {
+                        computerChoice = 'scissors'
+                    }
+                    
+                }
+                randomChoice()
+                console.log(computerChoice)
+                
+                function createResult() {    
+                    if (computerChoice === 'rock') {
+                        if (playerChoice === 'rock') {
+                            result = 'tie'
+                        } else if (playerChoice === 'paper') {
+                            result = 'win'
+                        } else if (playerChoice === 'scissors') {
+                            result = 'lose'
+                        }
+                    }
+                    if (computerChoice === 'paper') {
+                        if (playerChoice === 'rock') {
+                            result = 'lose'
+                        } else if (playerChoice === 'paper') {
+                            result = 'tie'
+                        } else if (playerChoice === 'scissors') {
+                            result = 'win'
+                        }
+                    }
+                    if (computerChoice === 'scissors') {
+                        if (playerChoice === 'rock') {
+                            result = 'win'
+                        } else if (playerChoice === 'paper') {
+                            result = 'lose'
+                        } else if (playerChoice === 'scissors') {
+                            result = 'tie'
+                        }
+                        
+                    }
+                    
+                
+                }
+                createResult()
+                console.log(playerChoice)
+                console.log(result)
+                
+                let playerChoiceVisual = document.querySelector('.player-choice')
+                let computerChoiceVisual = document.querySelector('.computer-choice')
+                let resultVisual = document.querySelector('.bottom-top')
+                let scoreVisual = document.querySelector('.bottom')
+                const buttons = document.querySelector('.buttons')
+                
+                const rockImg = document.createElement('img')
+                rockImg.src = "img/rock-image.png"
+                rockImg.width = 50
+                rockImg.height = 50
+
+                const paperImg = document.createElement('img')
+                paperImg.src = "img/paper-image.png"
+                paperImg.width = 50
+                paperImg.height = 50
+
+                const scissorsImg = document.createElement('img')
+                scissorsImg.src = "img/scissors-image3.png"
+                scissorsImg.width = 50
+                scissorsImg.height = 50
+                
+                function displayResult() {
+                    
+                    
+                    buttons.addEventListener('mouseover', (event) => {
+                        
+                        let target = event.target;
+
+                        switch(target.id) {
+                            
+                            case 'rock':
+                                playerChoiceVisual.appendChild(rockImg)
+                                playerChoiceVisual.setAttribute('style', 'background-color: lightblue;')
+                            break;
+                            
+                            case 'paper':
+                                playerChoiceVisual.appendChild(paperImg)
+                                playerChoiceVisual.setAttribute('style', 'background-color: lightgreen;')
+                            break;
+                            
+                            case 'scissors':
+                                playerChoiceVisual.appendChild(scissorsImg)
+                                playerChoiceVisual.setAttribute('style', 'background-color: pink;')
+                            break;
+
+                            case 'rock-capture':
+                                playerChoiceVisual.appendChild(rockImg)
+                                playerChoiceVisual.setAttribute('style', 'background-color: lightblue;')
+                            break;
+
+                            case 'paper-capture':
+                                playerChoiceVisual.appendChild(paperImg)
+                                playerChoiceVisual.setAttribute('style', 'background-color: lightgreen;')
+                            break;
+
+                            case 'scissors-capture':
+                                playerChoiceVisual.appendChild(scissorsImg)
+                                playerChoiceVisual.setAttribute('style', 'background-color: pink;')
+                            break;
+                            return
+                        }
+                    })
+
+                    buttons.addEventListener('mouseout', (event) => {
+                        let target = event.target;
+
+                        switch(target.id) {
+                            case 'rock':
+                                playerChoiceVisual.textContent = ''
+                                playerChoiceVisual.setAttribute('style', 'background: transparent;')
+                            break;
+                            
+                            case 'paper':
+                                playerChoiceVisual.textContent = ''
+                                playerChoiceVisual.setAttribute('style', 'background: transparent;')
+                            break;
+                            
+                            case 'scissors':
+                                playerChoiceVisual.textContent = ''
+                                playerChoiceVisual.setAttribute('style', 'background: transparent;')
+                            break;
+                        }
+                    })
+
+                    buttons.addEventListener('click', () => {
+                        if (playerChoiceVisual) {
+                            
+                        }
+                    })
+                    
+                    if (result === '') {
+                        resultVisual.textContent = 'Waiting...'
+                    } else if (result === 'tie') {
+                        resultVisual.textContent = `It's a ${result}...`
+                    } else if (result === 'lose') {
+                        resultVisual.textContent = `You ${result} :(`
+                    } else {resultVisual.textContent = `You ${result}!`}
+                }
+                displayResult()
+
+            }
+            
+            playGame()
+            
+
+
+        </script>
+    </div>
+    <!-- choices at top
+     text that explains
+     result
+     score -->
+</body>
+</html>

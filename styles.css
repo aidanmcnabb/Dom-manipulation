@@ -1,0 +1,161 @@
+body {
+    background-color: rgb(209, 180, 99);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    
+}
+
+.rps {
+    display: flex;
+    background-color: rgb(131, 130, 102);
+    width: 570px;
+    height: 500px;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    border-style: ridge;
+    border-image:
+            linear-gradient(rgb(236, 238, 133), rgb(56, 46, 2)) 1;
+    border-color: rgb(189, 170, 67);
+    border-width: 10px;
+
+    
+}
+
+.header {
+    font-weight: 400;
+    font-size: 50px;
+    margin-bottom: 20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 0;
+    padding-top: 20px;
+    color: rgb(243, 225, 122);
+    text-shadow:   -2px -2px 0 rgba(168, 112, 28, 1),
+                    2px -2px 0 rgba(168, 112, 28, 1),
+                   -2px 2px 0 rgba(168, 112, 28, 1),
+                    2px 2px 0 rgba(168, 112, 28, 1),
+                   -3px 0 0 rgba(168, 112, 28, 1),
+                    3px 0 0 rgba(168, 112, 28, 1),
+                    0 -3px 0 rgba(168, 112, 28, 1),
+                    0 3px 0 rgba(168, 112, 28, 1);
+    
+}
+
+.top {
+    display: flex;
+    gap: 50px;
+    margin-top: 0px;
+    
+}
+
+button {
+    background-color: rgb(223, 178, 120);
+    border-radius: 20%;
+    border-width: 5px;
+    width: 100px;
+    height: 100px;
+    border-color: bisque;
+    margin-top: 0px;
+}
+
+.player-choice {
+    width: 100px;
+    height: 100px;
+    border-width: 10px;
+    border-style: solid;
+    color: rgb(71, 69, 66);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.computer-choice {
+    width: 100px;
+    height: 100px;
+    border-width: 10px;
+    border-style: solid;
+    color: rgb(71, 69, 66);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.vs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+    font-size: 75px;
+    color: rgb(219, 211, 162);
+    text-shadow:   -2px -2px 0 rgb(0, 0, 0),
+                    2px -2px 0 rgb(0, 0, 0),
+                   -2px 2px 0 rgb(0, 0, 0),
+                    2px 2px 0 rgb(0, 0, 0),
+                   -3px 0 0 rgb(0, 0, 0),
+                    3px 0 0 rgb(0, 0, 0),
+                    0 -3px 0 rgb(0, 0, 0),
+                    0 3px 0 rgb(0, 0, 0);
+}
+
+.under-text {
+    display: flex;
+    justify-content: center;
+    gap: 145px;
+    padding-left: 10px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(204, 184, 69);
+    text-shadow:   -2px -2px 0 rgb(0, 0, 0),
+                    2px -2px 0 rgb(0, 0, 0),
+                   -2px 2px 0 rgb(0, 0, 0),
+                    2px 2px 0 rgb(0, 0, 0),
+                   -3px 0 0 rgb(0, 0, 0),
+                    3px 0 0 rgb(0, 0, 0),
+                    0 -3px 0 rgb(0, 0, 0),
+                    0 3px 0 rgb(0, 0, 0);
+}
+
+#under-computer {
+    padding-left: 10px;
+}
+
+.bottom-top {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 35px;
+    color: rgb(204, 184, 69);
+    text-shadow:   -2px -2px 0 rgb(0, 0, 0),
+                    2px -2px 0 rgb(0, 0, 0),
+                   -2px 2px 0 rgb(0, 0, 0),
+                    2px 2px 0 rgb(0, 0, 0),
+                   -3px 0 0 rgb(0, 0, 0),
+                    3px 0 0 rgb(0, 0, 0),
+                    0 -3px 0 rgb(0, 0, 0),
+                    0 3px 0 rgb(0, 0, 0);
+}
+
+.bottom {
+    font-size: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+}
+
+#reset {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 90px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(77, 77, 77);
+}
