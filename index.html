@@ -42,15 +42,30 @@
             Result
         </div>
         <div class="bottom">
-            Score
+            <div class="box" id="box-win">hi</div>
+            <div class="box" id="box-tie">hi</div>
+            <div class="box" id="box-lose">hi</div>
+        </div>
+        <div class="bottom-bottom">
+            <div class="under-box-text">Wins</div>
+            <div class="under-box-text" id="under-box-text-ties">Ties</div>
+            <div class="under-box-text">Losses</div>
         </div>
         <script>
+            
             
             const score = {
                 wins: 0,
                 losses: 0,
                 ties: 0
             }
+
+            
+
+            const scoreVisualWin = document.querySelector('#box-win')
+            const scoreVisualTie = document.querySelector('#box-tie')
+            const scoreVisualLose = document.querySelector('#box-lose')
+
 
             function playGame(playerChoice) {
                 const random = Math.random();
@@ -105,7 +120,7 @@
                 let playerChoiceVisual = document.querySelector('.player-choice')
                 let computerChoiceVisual = document.querySelector('.computer-choice')
                 let resultVisual = document.querySelector('.bottom-top')
-                let scoreVisual = document.querySelector('.bottom')
+                
                 const buttons = document.querySelector('.buttons')
                 
                 const rockImg = document.createElement('img')
@@ -192,8 +207,6 @@
                     buttons.addEventListener('mouseout', (event) => {
                         let target = event.target;
 
-                        
-
                         switch(target.id) {
                             case 'rock-inside':
                                 playerChoiceVisual.textContent = ''
@@ -212,14 +225,9 @@
                         }
                     })
                     
-                   
-
-                    
                 }
                 displayResult()
                 
-                
-
                 function computerChoiceDisplay() {
                        
                     if (playerChoice === 'rock' || playerChoice === 'paper' || playerChoice === 'scissors') {
@@ -228,7 +236,7 @@
                                 if (result === 'tie') {
                                     computerChoiceVisual.setAttribute('style', 'color: yellow; background-color: lightblue;')
                                 } else if (result === 'win') {
-                                    computerChoiceVisual.setAttribute('style', 'color: lightgreen; background-color: lightblue;')
+                                    computerChoiceVisual.setAttribute('style', 'color: green; background-color: lightblue;')
                                 } else if (result === 'lose') {
                                     computerChoiceVisual.setAttribute('style', 'color: red; background-color: lightblue;')
                                 }
@@ -237,7 +245,7 @@
                             if (result === 'tie') {
                                     computerChoiceVisual.setAttribute('style', 'color: yellow; background-color: lightgreen;')
                                 } else if (result === 'win') {
-                                    computerChoiceVisual.setAttribute('style', 'color: lightgreen; background-color: lightgreen;')
+                                    computerChoiceVisual.setAttribute('style', 'color: green; background-color: lightgreen;')
                                 } else if (result === 'lose') {
                                     computerChoiceVisual.setAttribute('style', 'color: red; background-color: lightgreen;')
                                 }
@@ -246,13 +254,12 @@
                             if (result === 'tie') {
                                     computerChoiceVisual.setAttribute('style', 'color: yellow; background-color: pink;')
                                 } else if (result === 'win') {
-                                    computerChoiceVisual.setAttribute('style', 'color: lightgreen; background-color: pink;')
+                                    computerChoiceVisual.setAttribute('style', 'color: green; background-color: pink;')
                                 } else if (result === 'lose') {
                                     computerChoiceVisual.setAttribute('style', 'color: red; background-color: pink;')
                                 }
                         }
                         
-
                         while (computerChoiceVisual.children.length > 1) {
                             computerChoiceVisual.removeChild(computerChoiceVisual.firstChild);
                         
@@ -278,22 +285,37 @@
                 const ties = score.ties
                 const losses = score.losses
                 
-                scoreVisual.textContent = `Wins: ${wins}, Ties: ${ties}, Losses: ${losses}`
+                scoreVisualWin.textContent = `${wins}`
+                scoreVisualTie.textContent = `${ties}`
+                scoreVisualLose.textContent = `${losses}`
+
                }
+               
                updateScore()
 
-               function resetScore() {
-                    score.wins = 0
-                    score.losses = 0
-                    score.ties = 0
-               }
-        
             }
             
             playGame()
-            
+
+            function resetScore() {
+                score.wins = 0
+                score.losses = 0
+                score.ties = 0
+
+                scoreVisualWin.textContent = `${score.wins}`
+                scoreVisualTie.textContent = `${score.ties}`
+                scoreVisualLose.textContent = `${score.losses}`
+            }
+
+            let scoreSerialized = JSON.stringify(score)
 
 
+            let storedScoreString = localStorage.getItem('score')
+            const storedScore = JSON.parse(storedScoreString)
+
+
+            localStorage.setItem('score', scoreSerialized)
+        
         </script>
     </div>
     <!-- choices at top
