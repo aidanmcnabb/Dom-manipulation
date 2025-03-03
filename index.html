@@ -8,7 +8,7 @@
 </head>
 <body>
     <p class="header">RPS BITCH</p>
-    <button id="reset">RESET</button>
+    <button id="reset" onclick="resetScore()">RESET</button>
     <div class="rps">
         <div class="top">
             <div class="player-choice">
@@ -46,6 +46,12 @@
         </div>
         <script>
             
+            const score = {
+                wins: 0,
+                losses: 0,
+                ties: 0
+            }
+
             function playGame(playerChoice) {
                 const random = Math.random();
                 let computerChoice = ''
@@ -107,18 +113,37 @@
                 rockImg.width = 50
                 rockImg.height = 50
 
+                const rockImg2 = document.createElement('img')
+                rockImg2.src = "img/rock-image.png"
+                rockImg2.width = 50
+                rockImg2.height = 50
+
                 const paperImg = document.createElement('img')
                 paperImg.src = "img/paper-image.png"
                 paperImg.width = 50
                 paperImg.height = 50
+
+                const paperImg2 = document.createElement('img')
+                paperImg2.src = "img/paper-image.png"
+                paperImg2.width = 50
+                paperImg2.height = 50
 
                 const scissorsImg = document.createElement('img')
                 scissorsImg.src = "img/scissors-image3.png"
                 scissorsImg.width = 50
                 scissorsImg.height = 50
 
-                function displayResult() {
-                    
+                const scissorsImg2 = document.createElement('img')
+                scissorsImg2.src = "img/scissors-image3.png"
+                scissorsImg2.width = 50
+                scissorsImg2.height = 50
+
+                const hourGlass = document.createElement('img')
+                hourGlass.src = "img/hour-glass.png"
+                hourGlass.width = 50
+                hourGlass.height = 50
+
+                function displayResult() { 
                     
                     buttons.addEventListener('mouseover', (event) => {
                         
@@ -131,6 +156,7 @@
                         switch(target.id) {
                             
                             case 'rock-inside':
+                                
                                 playerChoiceVisual.appendChild(rockImg)
                                 playerChoiceVisual.setAttribute('style', 'background-color: lightblue;')
                             break;
@@ -166,6 +192,8 @@
                     buttons.addEventListener('mouseout', (event) => {
                         let target = event.target;
 
+                        
+
                         switch(target.id) {
                             case 'rock-inside':
                                 playerChoiceVisual.textContent = ''
@@ -184,30 +212,44 @@
                         }
                     })
                     
-                    if (result === '') {
-                        resultVisual.textContent = 'Waiting...'
-                    } else if (result === 'tie') {
-                        resultVisual.textContent = `It's a ${result}...`
-                    } else if (result === 'lose') {
-                        resultVisual.textContent = `You ${result} :(`
-                    } else {resultVisual.textContent = `You ${result}!`}
+                   
 
-                    function score() {}
+                    
                 }
                 displayResult()
+                
+                
 
                 function computerChoiceDisplay() {
-                        
-                    if (playerChoice.length > 3) {
+                       
+                    if (playerChoice === 'rock' || playerChoice === 'paper' || playerChoice === 'scissors') {
                         if (computerChoice === 'rock') {
-                                computerChoiceVisual.appendChild(rockImg)
-                                computerChoiceVisual.setAttribute('style', 'background-color: lightblue;')
+                                computerChoiceVisual.appendChild(rockImg2)
+                                if (result === 'tie') {
+                                    computerChoiceVisual.setAttribute('style', 'color: yellow; background-color: lightblue;')
+                                } else if (result === 'win') {
+                                    computerChoiceVisual.setAttribute('style', 'color: lightgreen; background-color: lightblue;')
+                                } else if (result === 'lose') {
+                                    computerChoiceVisual.setAttribute('style', 'color: red; background-color: lightblue;')
+                                }
                         } else if (computerChoice === 'paper') {
-                            computerChoiceVisual.appendChild(paperImg)
-                            computerChoiceVisual.setAttribute('style', 'background-color: lightgreen;')
+                            computerChoiceVisual.appendChild(paperImg2)
+                            if (result === 'tie') {
+                                    computerChoiceVisual.setAttribute('style', 'color: yellow; background-color: lightgreen;')
+                                } else if (result === 'win') {
+                                    computerChoiceVisual.setAttribute('style', 'color: lightgreen; background-color: lightgreen;')
+                                } else if (result === 'lose') {
+                                    computerChoiceVisual.setAttribute('style', 'color: red; background-color: lightgreen;')
+                                }
                         } else if (computerChoice === 'scissors') {
-                            computerChoiceVisual.appendChild(scissorsImg)
-                            computerChoiceVisual.setAttribute('style', 'background-color: pink;')
+                            computerChoiceVisual.appendChild(scissorsImg2)
+                            if (result === 'tie') {
+                                    computerChoiceVisual.setAttribute('style', 'color: yellow; background-color: pink;')
+                                } else if (result === 'win') {
+                                    computerChoiceVisual.setAttribute('style', 'color: lightgreen; background-color: pink;')
+                                } else if (result === 'lose') {
+                                    computerChoiceVisual.setAttribute('style', 'color: red; background-color: pink;')
+                                }
                         }
                         
 
@@ -215,12 +257,37 @@
                             computerChoiceVisual.removeChild(computerChoiceVisual.firstChild);
                         
                         }
-                    } else {
-                        computerChoiceVisual.removeChildren()
-                    }
+                    } 
                 }
                 computerChoiceDisplay()
 
+                if (result === '') {
+                        resultVisual.textContent = 'Waiting...'
+                    } else if (result === 'tie') {
+                        resultVisual.textContent = `It's a ${result}...`
+                        score.ties += 1
+                    } else if (result === 'lose') {
+                        resultVisual.textContent = `You ${result} :(`
+                        score.losses += 1
+                    } else {resultVisual.textContent = `You ${result}!`
+                        score.wins += 1
+                    }
+
+               function updateScore() {
+                const wins = score.wins
+                const ties = score.ties
+                const losses = score.losses
+                
+                scoreVisual.textContent = `Wins: ${wins}, Ties: ${ties}, Losses: ${losses}`
+               }
+               updateScore()
+
+               function resetScore() {
+                    score.wins = 0
+                    score.losses = 0
+                    score.ties = 0
+               }
+        
             }
             
             playGame()
