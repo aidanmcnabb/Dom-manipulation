@@ -54,12 +54,12 @@
         <script>
             
             
-            const score = {
+            let score = JSON.parse(localStorage.getItem('score')) || {
                 wins: 0,
-                losses: 0,
-                ties: 0
+                ties: 0,
+                losses: 0
             }
-
+            
             
 
             const scoreVisualWin = document.querySelector('#box-win')
@@ -280,18 +280,23 @@
                         score.wins += 1
                     }
 
+        
+                
+            
+
                function updateScore() {
                 const wins = score.wins
                 const ties = score.ties
                 const losses = score.losses
-                
                 scoreVisualWin.textContent = `${wins}`
                 scoreVisualTie.textContent = `${ties}`
                 scoreVisualLose.textContent = `${losses}`
 
                }
-               
                updateScore()
+               
+               localStorage.setItem('score', JSON.stringify(score))
+               
 
             }
             
@@ -302,19 +307,20 @@
                 score.losses = 0
                 score.ties = 0
 
+                localStorage.removeItem('score')
+
                 scoreVisualWin.textContent = `${score.wins}`
                 scoreVisualTie.textContent = `${score.ties}`
                 scoreVisualLose.textContent = `${score.losses}`
             }
 
-            let scoreSerialized = JSON.stringify(score)
+            
+
+            
+            
 
 
-            let storedScoreString = localStorage.getItem('score')
-            const storedScore = JSON.parse(storedScoreString)
-
-
-            localStorage.setItem('score', scoreSerialized)
+            
         
         </script>
     </div>

@@ -50,11 +50,11 @@
         </div>
         <div class="right">
             <div class="display">
-                <div class="top-section">Hello</div>
+                <button class="top-section" onclick="result('win')">win</button>
                 <hr>
-                <div class="top-middle-section">How's it Going</div>
+                <button class="top-middle-section" onclick="result('tie')">tie</button>
                 <hr>
-                <div class="bottom-middle-section">Not bad</div>
+                <button class="bottom-middle-section" onclick="result('loss')">loss</button>
                 <hr class="line">
                 <div class="bottom-section">How are you?</div>
             </div>
@@ -69,6 +69,43 @@
     <footer id="footer"></footer>
 
     <script>
+        
+        
+            let myObj = {
+                wins: 0,
+                ties: 0,
+                losses: 0
+            }
+            let myObjSerialized = JSON.stringify(myObj)
+            localStorage.setItem("myObj", myObjSerialized)
+            let myObjDeserialzed = JSON.parse(localStorage.getItem("myObj"))
+            console.log(myObjDeserialzed)
+        
+
+        
+
+        if (!myObjDeserialzed) {
+            myObjDeserialzed = {
+                wins: 0,
+                ties: 0,
+                losses: 0
+            }
+        } else {
+            myObj = myObjDeserialzed
+        }
+
+        function result(event) {
+            if (event === 'win') {
+                myObj.wins += 1
+                myObj.ties += 1
+                myObj.losses += 1
+            }
+            console.log(myObj)
+        }
+        
+        
+        /*
+        
         const container = document.querySelector("#container3");
 
         const display = container.firstElementChild;
@@ -79,6 +116,7 @@
         div.setAttribute('id', 'theDiv');
         div.textContent = 'Hello World!';
         container.appendChild(div)
+        */
     </script>
 </body>
 </html>
