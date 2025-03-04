@@ -21,8 +21,6 @@ body {
             linear-gradient(rgb(236, 238, 133), rgb(56, 46, 2)) 1;
     border-color: rgb(189, 170, 67);
     border-width: 10px;
-
-    
 }
 
 .header {
@@ -59,6 +57,7 @@ button {
     height: 100px;
     border-color: bisque;
     margin-top: 0px;
+    box-shadow: 6px 3px 3px rgb(32, 32, 32);
 }
 
 .player-choice {
@@ -121,6 +120,7 @@ button {
                     3px 0 0 rgb(0, 0, 0),
                     0 -3px 0 rgb(0, 0, 0),
                     0 3px 0 rgb(0, 0, 0);
+    
 }
 
 #under-computer {
@@ -146,6 +146,21 @@ button {
     font-size: 25px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 600;
+    color: rgb(238, 227, 82);
+    display: flex;
+    gap: 70px;
+}
+
+.box {
+    border-style: groove;
+    border-width: 8px;
+    border-color: rgb(238, 211, 89) rgb(248, 245, 33) rgb(230, 186, 65) rgb(151, 139, 28);
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 7px 5px 5px rgb(37, 37, 37);
 }
 
 #reset {
@@ -159,3 +174,72 @@ button {
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: rgb(77, 77, 77);
 }
+
+.bottom-bottom {
+    display: flex;
+    gap: 80px;
+    padding-left: 7px;
+}
+
+.under-box-text {
+    display: flex;
+    justify-content: center;
+    gap: 145px;
+    padding-left: 10px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(204, 184, 69);
+    text-shadow:   -2px -2px 0 rgb(0, 0, 0),
+                    2px -2px 0 rgb(0, 0, 0),
+                   -2px 2px 0 rgb(0, 0, 0),
+                    2px 2px 0 rgb(0, 0, 0),
+                   -3px 0 0 rgb(0, 0, 0),
+                    3px 0 0 rgb(0, 0, 0),
+                    0 -3px 0 rgb(0, 0, 0),
+                    0 3px 0 rgb(0, 0, 0);
+}
+
+#box-win {
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(204, 184, 69);
+    text-shadow:   -2px -2px 0 rgb(0, 0, 0),
+                    2px -2px 0 rgb(0, 0, 0),
+                   -2px 2px 0 rgb(0, 0, 0),
+                    2px 2px 0 rgb(0, 0, 0),
+                   -3px 0 0 rgb(0, 0, 0),
+                    3px 0 0 rgb(0, 0, 0),
+                    0 -3px 0 rgb(0, 0, 0),
+                    0 3px 0 rgb(0, 0, 0);
+}
+
+#box-tie {
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(204, 184, 69);
+    text-shadow:   -2px -2px 0 rgb(0, 0, 0),
+                    2px -2px 0 rgb(0, 0, 0),
+                   -2px 2px 0 rgb(0, 0, 0),
+                    2px 2px 0 rgb(0, 0, 0),
+                   -3px 0 0 rgb(0, 0, 0),
+                    3px 0 0 rgb(0, 0, 0),
+                    0 -3px 0 rgb(0, 0, 0),
+                    0 3px 0 rgb(0, 0, 0);
+}
+
+#box-lose {
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(204, 184, 69);
+    text-shadow:   -2px -2px 0 rgb(0, 0, 0),
+                    2px -2px 0 rgb(0, 0, 0),
+                   -2px 2px 0 rgb(0, 0, 0),
+                    2px 2px 0 rgb(0, 0, 0),
+                   -3px 0 0 rgb(0, 0, 0),
+                    3px 0 0 rgb(0, 0, 0),
+                    0 -3px 0 rgb(0, 0, 0),
+                    0 3px 0 rgb(0, 0, 0);
+}
+
+
